@@ -2295,3 +2295,12 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
 	... 81 more
+2022-04-29 12:53:37 jdbc[33]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "'This plant is a native to South Africa, a real talking point it has large exotic looking paddle shaped leaves on long elegant s... (307)"; SQL statement:
+update product set category_id=?, description=?, image_name=?, name=?, price=?, weight=? where id=? [22001-200]
+2022-04-29 12:54:40 jdbc[33]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "'This plant is a native to South Africa, a real talking point it has large exotic looking paddle shaped leaves on long elegant s... (307)"; SQL statement:
+update product set category_id=?, description=?, image_name=?, name=?, price=?, weight=? where id=? [22001-200]
+2022-04-29 12:54:55 jdbc[33]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "'This plant is a native to South Africa, a real talking point it has large exotic looking paddle shaped leaves on long elegant s... (307)"; SQL statement:
+update product set category_id=?, description=?, image_name=?, name=?, price=?, weight=? where id=? [22001-200]
