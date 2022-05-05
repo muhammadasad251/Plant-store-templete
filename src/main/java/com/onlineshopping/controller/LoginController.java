@@ -27,10 +27,9 @@ import com.onlineshopping.repository.UserRepository;
 public class LoginController {
 
 
-	//private BCryptPasswordEncoder bCryptPasswordEncoder;
-
 	@Autowired
 	UserRepository userRepository;
+
 	@Autowired
 	RoleRepository roleRepository;
 
@@ -43,22 +42,20 @@ public class LoginController {
 	public String registerGet() {
 		return "register";
 	}
-	
+
 	@PostMapping("/register")
 	public String registerPost(@ModelAttribute("user") User user) {
 		String password = user.getPassword();
 		user.setPassword(password);
 		Set<Role> roles = new HashSet<>();
 		Role role = roleRepository.findById(1).get();
-		System.out.println(role.getName());
 		roles.add(role);
 		user.setRole(roles) ;
 		User newUser = new User(user.getFirstName(), user.getLastName(), user.getEmail(), password);
 		newUser.setRole(roles);
 		userRepository.save(newUser);
-		//request.login(user.getEmail(), password);
 		return "redirect:/";
-		
+
 	}
 
 
