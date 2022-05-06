@@ -20,8 +20,9 @@ public class CategoryService {
 		
 	}
 	
-	public void addCategory(Category category) {
+	public Category addCategory(Category category) {
 		categoryRepository.save(category);
+		return category;
 	}
 	
 	public void removeCategoryById(int id) {

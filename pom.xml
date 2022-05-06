@@ -81,11 +81,6 @@
 		</dependency>
 		<dependency>
 			<groupId>com.paytm</groupId>
-			<artifactId>miniapp-sdk-client</artifactId>
-			<version>1.0.2-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.paytm</groupId>
 			<artifactId>paytm-checksum</artifactId>
 			<version>1.2.0</version>
 		</dependency>
