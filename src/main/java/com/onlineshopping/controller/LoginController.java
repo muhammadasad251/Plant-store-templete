@@ -38,11 +38,17 @@ public class LoginController {
 		return "login";
 	}
 
+	@PostMapping("/login")
+	public String loginPost(@ModelAttribute("user") User user) {
+		return "redirect:/shop";
+		
+	}
+
 	@GetMapping("/register")
 	public String registerGet() {
 		return "register";
 	}
-
+	
 	@PostMapping("/register")
 	public String registerPost(@ModelAttribute("user") User user) {
 		String password = user.getPassword();
@@ -55,7 +61,7 @@ public class LoginController {
 		newUser.setRole(roles);
 		userRepository.save(newUser);
 		return "redirect:/";
-
+		
 	}
 
 

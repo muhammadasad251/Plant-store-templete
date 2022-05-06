@@ -24,25 +24,62 @@ public class CartController {
 	}
 	
 	@GetMapping("/cart")
-		public String cartGet(Model model) {
-			model.addAttribute("cartCount", GlobalData.cart.size());
-			List<Product> cart = GlobalData.cart;
-			Double sum = 0.00;
+	public String cartGet(Model model) {
+		model.addAttribute("cartCount", GlobalData.cart.size());
+		List<Product> cart = GlobalData.cart;
+		Double sum = 0.00;
 
-			if (cart.size() == 0) {
-				sum = 0.00;
-			} else {
-				for (int i=0; i<cart.size(); i++) {
-					sum = sum + cart.get(i).getPrice();
-				}
-			}
-			 
-			System.out.println(GlobalData.cart.get(0));
+		if (cart.size() == 0) {
+			sum = 0.00;
 			model.addAttribute("total", sum);
-			model.addAttribute("cart",GlobalData.cart);
+			model.addAttribute("cart", GlobalData.cart);
 			return "cart";
-			
+		} else {
+			for (int i = 0; i < cart.size(); i++) {
+				sum = sum + cart.get(i).getPrice();
+			}
 		}
+		
+		if (sum > 60) {
+			sum = sum - (sum * 30 / 100);
+			model.addAttribute("discount", "20% discount is applied");
+		}
+
+
+		model.addAttribute("total", sum);
+		model.addAttribute("cart", GlobalData.cart);
+		return "cart";
+
 	}
+
+	@GetMapping("/cart/removeItem/{index}")
+	public String cartItemRemove(@PathVariable int index) {
+		GlobalData.cart.remove(index);
+		return "redirect:/cart";
+
+	}
+
+	@GetMapping("/checkout")
+	public String checkout(Model model) {
+		List<Product> cart = GlobalData.cart;
+		Double sum = 0.00;
+		
+		if (cart.size() > 0) {
+			for (int i = 0; i < cart.size(); i++) {
+				sum = sum + cart.get(i).getPrice();
+			}
+		}
+		
+		if (sum > 50) {
+			sum = sum - (sum * 20 / 100);
+			model.addAttribute("discount", "20% discount is applied");
+		}
+		
+		model.addAttribute("total", sum);
+		model.addAttribute("cart", GlobalData.cart);
+		return "checkout";
+	}
+
+}
 
 

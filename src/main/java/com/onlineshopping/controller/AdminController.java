@@ -58,6 +58,7 @@ public class AdminController {
 		categoryService.removeCategoryById(id);
 		return "redirect:/admin/categories"; 		
 	}
+	
 	@GetMapping("/admin/categories/update/{id}")
 	public String updateCat(@PathVariable int id, Model model) {
 		Optional<Category> category = categoryService.getCategoryById(id);
